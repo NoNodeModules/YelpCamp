@@ -5,16 +5,38 @@ var middleware = require("../middleware");
 //Since whenever we require a directory it acquires index.js inside it
 //Campground Page : INDEX ROUTE- Display all the campgrounds in DB
 router.get("/",function(req,res){
-    //Get all the campgrounds from DB and then render the file
-    Campground.find({},function(err,allCampgrounds){
+    var noMatch = null;
+    if(req.query.search)
+    {
+        
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        Campground.find({name:regex},function(err,allCampgrounds){
        if(err)
        {
            console.log(err);
        }
        else{
-           res.render("campgrounds/index",{campgrounds:allCampgrounds});   
+           if(allCampgrounds.length < 1)
+           {
+               noMatch = "No Campgrounds match that query, Please try again.";
+           }
+           res.render("campgrounds/index",{campgrounds:allCampgrounds,noMatch: noMatch});   
        }
     });
+    }
+    else
+    {
+    //Get all the campgrounds from DB and then render the file
+        Campground.find({},function(err,allCampgrounds){
+           if(err)
+           {
+               console.log(err);
+           }
+           else{
+               res.render("campgrounds/index",{campgrounds:allCampgrounds,noMatch: noMatch});   
+           }
+        });
+    }
 });
 
 //Creating Post request for Campground posting and also this is a convention to name the routes same for get and post
@@ -103,4 +125,7 @@ router.delete("/:id",middleware.checkCampgroundOwnership,function(req,res){
       }
    });
 });
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 module.exports = router;

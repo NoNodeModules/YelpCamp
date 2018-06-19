@@ -14,6 +14,12 @@
                 <a class="navbar-brand" href="/">YelpCamp</a>
             </div>
             <div class="collapse navbar-collapse">
+                    <form action="/campgrounds" method="GET" class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text" name="search" placeholder="Campground Search..." class="form-control">
+                            <input type="submit" value="Search" class="btn btn-default">
+                        </div>
+                    </form>
                 <ul class="nav navbar-nav navbar-right">
                     <% if(!currentUser) {%>
                     <li><a href="/login">Login</a></li>
