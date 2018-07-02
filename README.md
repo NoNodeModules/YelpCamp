@@ -103,19 +103,20 @@ https://jasbiryelpcamp.herokuapp.com/
 * Install and configure connect-flash
 * Add bootstrap alerts to header
 * make meaningful messages in flash message
-## RESTFUL ROUTES USED IN MY APP
-| Name | URL | Verb | Description
-| :---         |     :---:      |          ---: |
-| INDEX   | /campgrounds     | GET   |  			Display a list of all campgrounds  |  
-| NEW   | /campgrounds/new     | GET   |  			Displays form to make a new campground  |  
-| CREATE   | /campgrounds     | POST   |  			Add new campground to DB  |  
-| SHOW   | /campgrounds/:id     | GET   |  			Shows info about one campground  |  
-| EDIT   | /campgrounds/:id/edit     | GET   |  			show edit form for one campground  | 
-| UPDATE   | /campgrounds/:id     | PUT   |  			update a particular campground then redirect somewhere  |  
-| DELETE   | /campgrounds/:id     | DELETE   |  delete a particular dog then redirect somewhere|
-adding comments routes to existing routes(without loosing restfullness of app)			    
 
+## RESTFUL ROUTES USED IN MY APP
+
+| name  |     url  |    verb |   description |
+|-------|----------|---------|---------|
+|INDEX  | /campgrounds    |  GET    |Display a list of all campgrounds     |
+|NEW    | /campgrounds/new | GET    |Displays form to make a new campground |
+|CREATE | /campgrounds     | POST   | Add new campground to DB              |
+|SHOW   | /campgrounds/:id | GET    | Shows info about one campground |
+|EDIT   | /campgrounds/:id/edit | GET | show edit form for one campground |
+|UPDATE | /campgrounds/:id | PUT | update a particular campground then redirect somewhere|
+|DELETE | /campgrounds/:id | DELETE | delete a particular dog then redirect somewhere |
 > /campgrounds/:id/edit
+
 > /campgrounds/:id/comments/:comment_id/edit
 
 ## Styling landing Page
